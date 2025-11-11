@@ -19,7 +19,8 @@ function Register() {
     e.preventDefault();
     try {
       // Replace URL with your backend API endpoint
-      const response = await axios.post("http://localhost:5000/api/register", formData);
+      const response = await axios.post("http://localhost:5000/api/auth/register", formData);
+
       alert("Registration successful!");
       // After successful API call
      localStorage.setItem("token", response.data.token);

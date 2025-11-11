@@ -14,24 +14,28 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      // Replace URL with your backend API endpoint
-      const response = await axios.post("http://localhost:5000/api/login", formData);
-      const token = response.data.token;
-      const role = response.data.role;
+  e.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:5000/api/auth/login", formData);
+    const token = response.data.token;
+    const role = response.data.user.role;  // <-- fix here
 
-      // Save JWT token & role in localStorage
-      localStorage.setItem("token", token);
-      localStorage.setItem("role", role);
+    localStorage.setItem("token", token);
+    localStorage.setItem("role", role);
 
-      alert("Login successful!");
-      navigate("/"); // Redirect to protected home/dashboard
-    } catch (error) {
-      console.error(error);
-      alert("Login failed. Try again.");
-    }
-  };
+    alert("Login successful!");
+
+    // Redirect based on role
+    if (role === "admin") navigate("/admin");
+    else if (role === "doctor") navigate("/doctor");
+    else if (role === "patient") navigate("/patient");
+    else navigate("/login"); // fallback
+  } catch (error) {
+    console.error(error);
+    alert("Login failed. Try again.");
+  }
+};
+
 
   return (
     <div className="container">

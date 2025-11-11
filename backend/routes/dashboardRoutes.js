@@ -1,11 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const protect = require("../middleware/authMiddleware");
-const { getDashboard, getMe } = require("../controllers/dashboardController");
+const { getDashboard } = require("../controllers/dashboardController");
+const { protect } = require("../middleware/authMiddleware");
 
-// Role-based dashboard
+// ✅ use protect() since your function returns another middleware
 router.get("/", protect(), getDashboard);
-
-router.get("/me", protect(), getMe);  
 
 module.exports = router;

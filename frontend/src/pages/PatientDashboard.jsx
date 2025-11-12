@@ -28,6 +28,11 @@ function PatientDashboard() {
     <div className="container">
       <h2>Welcome, {name}</h2>
       <p>View your upcoming appointments and assigned doctor here.</p>
+      <button onClick={() => navigate("/patient/book-appointment")} style={{marrgin:20}}>
+  Book Appointment
+</button>
+
+
       <button onClick={handleLogout}>Logout</button>
     </div>
   );

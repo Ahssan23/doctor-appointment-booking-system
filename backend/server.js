@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const doctorRoutes = require("./routes/doctorRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const appointmentRoutes=require("./routes/appointmentRoutes")
 
 dotenv.config();
 connectDB();
@@ -18,6 +19,7 @@ app.use(express.json());
 // Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/doctors", doctorRoutes);
+app.use("/api/appointments",appointmentRoutes)
 
 app.use("/api/admin", adminRoutes); // ✅ now mounted at /api/admin
 

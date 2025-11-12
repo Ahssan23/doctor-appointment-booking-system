@@ -6,6 +6,8 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import AdminDashboard from "./pages/AdminDashboard";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import PatientDashboard from "./pages/PatientDashboard";
+import BookAppointment from "./components/BookAppointment";
+
 
 function App() {
   return (
@@ -40,16 +42,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+<Route
+  path="/patient/book-appointment"
+  element={
+    <ProtectedRoute>
+      <BookAppointment />
+    </ProtectedRoute>
+  }
+/>
+        
 
-        {/* Root "/" will automatically redirect inside ProtectedRoute */}
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <div>Redirecting...</div>
-            </ProtectedRoute>
-          }
-        />
       </Routes>
     </Router>
   );

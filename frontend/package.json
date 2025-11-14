@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "start": "vite build && vite preview"
-  },
+  "dev": "vite",
+  "build": "vite build",
+  "start": "vite preview --host --port 5000"
+}
+
   "keywords": [],
   "author": "",
   "license": "ISC",

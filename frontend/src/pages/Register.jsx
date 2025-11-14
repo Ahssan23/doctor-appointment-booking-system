@@ -19,7 +19,7 @@ function Register() {
     e.preventDefault();
     try {
       // Replace URL with your backend API endpoint
-      const response = await axios.post("http://localhost:5000/api/auth/register", formData);
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, formData);
 
       alert("Registration successful!");
       // After successful API call
